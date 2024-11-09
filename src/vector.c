@@ -29,7 +29,7 @@ int vector_init(Vector* vec) {
     vec->data = (double*) malloc(sizeof(double) * vec->chunk_size);
 
     if (vec->data == NULL) {
-        printf("Memory allocation for vector failed!\n");
+        fprintf(stderr, "Memory allocation for vector failed!\n");
         return ERR;
     }
 
@@ -56,7 +56,7 @@ int vector_allocate_new_block(Vector* vec) {
     double* new_data = (double*) realloc(vec->data, new_size);
 
     if (new_data == NULL) {
-        printf("Memory allocation for vector failed!\n");
+        fprintf(stderr, "Memory allocation for vector failed!\n");
         free(vec->data);
         return ERR;
     }
@@ -87,14 +87,14 @@ double vector_pop(Vector* vec) {
         return vec->data[vec->size];
     }
     else {
-        printf("Cannot pop from an empty vector\n");
+        fprintf(stderr, "Cannot pop from an empty vector\n");
         return NAN;
     }
 }
 
 double vector_remove(int index, Vector* vec) {
     if ((index < 0) || (index >= vec->size)) {
-        printf("Wrong index (%d)\n", index);
+        fprintf(stderr, "Wrong index (%d)\n", index);
         return NAN;
     }
     // Get the value at index
@@ -111,13 +111,13 @@ double vector_remove(int index, Vector* vec) {
 
 int vector_insert(double x, int index, Vector* vec) {
     if (index < 0) {
-        printf("Negative index is not supported yet!\n");
+        fprintf(stderr, "Negative index is not supported yet!\n");
         return ERR;
     }
 
     // Compare index to current vector size and allocate more memory if needed
     if (index > vec->size) {
-        printf("Index (%d) is larger than the size of the vector!", index);
+        fprintf(stderr, "Index (%d) is larger than the size of the vector!", index);
         return ERR;
     }
 

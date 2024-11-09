@@ -56,7 +56,7 @@ int vector_append(double x, Vector* vec);
 double vector_pop(Vector* vec);
 
 /* Remove a selected element */
-double vector_remove(int index, Vector* vec);  // TODO
+double vector_remove(int index, Vector* vec);
 
 /* Insert new element at chosen index. */
 int vector_insert(double x, int index, Vector* vec);
@@ -65,7 +65,5 @@ int vector_insert(double x, int index, Vector* vec);
 void vector_print(Vector* vec, unsigned int num_dec, bool newline);
 void vector_print_default(Vector* vec);
 void vector_print_details(Vector* vec);
-
-
 
 #endif  /* VECTOR_H */
